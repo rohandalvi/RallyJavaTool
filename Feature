@@ -1,0 +1,19 @@
+import java.io.IOException;
+import com.rallydev.rest.RallyRestApi;
+import com.rallydev.rest.request.QueryRequest;
+import com.rallydev.rest.response.QueryResponse;
+import com.rallydev.rest.util.Fetch;
+import com.rallydev.rest.util.QueryFilter;
+
+
+public class Feature extends connect {
+	
+	
+	public void get_feature(String Name) throws IOException {
+		QueryRequest request = new QueryRequest("PortfolioItem/Feature");
+		request.setFetch(new Fetch("Name","FormattedID","ObjectID"));
+		request.setQueryFilter(new QueryFilter("Name","=",Name));
+		
+		QueryResponse response = this.rest.query(request);
+	}
+}
